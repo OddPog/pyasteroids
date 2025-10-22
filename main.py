@@ -11,15 +11,15 @@ def main():
     fps_clock = pygame.time.Clock()
     dt = 0
 
-    updateable = pygame.sprite.Group()
+    updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
 
-    Asteroid.containers = (asteroids, updateable, drawable)
-    AsteroidField.containers = updateable
+    Asteroid.containers = (asteroids, updatable, drawable)
+    AsteroidField.containers = updatable
     asteroid_field = AsteroidField()
 
-    Player.containers = (updateable, drawable)
+    Player.containers = (updatable, drawable)
 
     player1 = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
 
@@ -27,7 +27,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        updateable.update(dt)
+        updatable.update(dt)
         screen.fill("Black")
         for thing in drawable:
             thing.draw(screen)
